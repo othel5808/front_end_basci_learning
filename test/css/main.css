@@ -1,4 +1,11 @@
 div {
-  color: red;
-  font-size: 100px;
+  width: 500px;
+  height: 500px;
+  background: url("https://avatars.githubusercontent.com/u/16679082?v=4");
 }
+
+/* #logo {
+  width: 200px;
+  height: 200px;
+  background: url("../images/sample.png");
+} */
