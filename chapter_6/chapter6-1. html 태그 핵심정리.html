@@ -1,0 +1,698 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>ch 6. HTML 핵심 정리</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3ee7f616-ba49-407a-bee1-de12f3d87040" class="page sans"><header><h1 class="page-title">ch 6. HTML 핵심 정리</h1><p class="page-description"></p></header><div class="page-body"><h1 id="da8ee8fc-4741-4b2f-89b7-344512a6550c" class="">01. 핵심 요소 정리</h1><h1 id="ede639d0-a413-499b-b8b2-39836c79d6d7" class="">&lt;div&gt;&lt;/div&gt; : 블록(상자) 요소</h1><p id="5f9c0f26-ef1f-44ce-a817-41ddb176d60b" class="">특별한 의미가 없는 구분을 위한 요소(division).  기본적으로 레이아웃을 작업 할때 주로 사용하는 것</p><p id="efe26ac8-d70e-40a5-bef8-a4995ecf1671" class=""><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid">여기를 어떻게 구분하지 라고 생각이 든다면 div를 사용</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f7608624-8bd4-4180-a32f-85f6fd014236" class="code"><code class="language-HTML">&lt;div&gt;
+	&lt;h1&gt;오늘의 날씨&lt;/h1&gt;
+	&lt;p&gt;중부 집중호우, 남부는 열대야, 12호 태풍 북상중...&lt;/p&gt;
+	&lt;img src=&quot;img/weather.jpg&quot; alt=&quot;12호 태풍&quot; /&gt;
+&lt;/div&gt;</code></pre><p id="f79538d0-f124-498a-8f4b-e87cb19eebec" class="">위와 같이 여러가지 개념을 한데 묶을때 보통 많이 사용</p><p id="5ecfc2f7-83a3-4f4d-ae6b-f1c0c0790353" class="">
+</p><h1 id="5748805e-d417-4e70-90db-6e5e25816461" class="">&lt;h1&gt;&lt;/h1&gt; : 블록(상자) 요소</h1><p id="3d00a108-8ce8-4371-9c41-b88c17ab9385" class="">제목(heading)을 의미하는 요소. heading은 h1~h6까지 존재하며, 숫자가 커질수록 크기가 작아진다.</p><p id="efba6d44-3446-48d0-8924-5e4e462905cf" class="">
+</p><h1 id="d04c135f-b85a-4e9c-a1ce-cb47209d0000" class="">&lt;p&gt;&lt;/p&gt; : 블록 상자 요소</h1><p id="7a0425ce-f0c9-4a00-b889-576edaa7d9cf" class="">문장(paragraph)을 의미하는 요소. </p><p id="51494afa-35d7-49dd-9488-08808a7ebacd" class="">글자를 다루고 있지만, <span style="border-bottom:0.05em solid">문장을 의미 하기 때문에 블록 요소로 구성</span>되어 있다는 점을 명심</p><p id="baa96720-bbb6-42e6-8369-dd47a9a02077" class="">
+</p><h1 id="1036b1b0-86c6-4606-84a1-dc6603dd9aee" class="">&lt;img /&gt; : 인라인 요소</h1><p id="5b3a50d6-5a41-4402-acd4-adf85603ba4d" class="">이미지를 삽입하는 태그, 속성과 값이 강제되는 <strong>빈 태그</strong>로 필수 속성에는 src(source)와 alt(alternate)값이 존재한다.</p><p id="0bcc7638-ff02-4b7c-b319-b5bb7537ea01" class="">
+</p><h1 id="95064224-3d8c-4773-b196-403c1ab2cf2e" class="">&lt;ul&gt;&lt;/ul&gt; : 블록(상자) 요소</h1><p id="3fb79d55-59e7-4eaf-9c77-3633f8b2f375" class="">순서가 필요없는 목록의 집합을 의미(Unorderd list), ul태그 안에는 li 태그가 반드시 하나는 들어 있어야한다.</p><p id="5a9370d4-0f9b-4b98-b9a4-bafc7352daa9" class="">
+</p><h1 id="da2fe131-8bce-4886-8819-c99acdbe484c" class="">&lt;li&gt;&lt;/li&gt; : 블록(상자) 요소</h1><p id="a85e2189-d333-4531-8db0-e7a9cd066c37" class="">목록 내 각 항목(list item)으로 <code>&lt;ul&gt;&lt;/ul&gt;</code> 의 자식 요소로 구성된다.</p><p id="dcc9c34e-a995-4aa8-9e50-5ddeadc00e1b" class="">
+</p><h1 id="41590932-554f-40c6-a022-c9d94676dda9" class="">&lt;a&gt;&lt;/a&gt; : 인라인(글자) 요소</h1><p id="5ec9adec-0f76-404b-a177-a7eef995b41f" class="">다른/같은 페이지로 이동하는 하이퍼 링ㅜ크를 지정하는 요소로, anchor의 약자를 의미한다.</p><p id="a13596e9-bbff-4144-9de2-91a7f3629b9c" class="">a 태그는 다른 페이지로 이동하는 특성 상, <code>href</code> 속성을 넣는 것을 강제한다.</p><ul id="d91abacf-2da6-4586-a949-d11b4d235df6" class="bulleted-list"><li style="list-style-type:disc"><code>target</code> : _blank를 입력할 경우 링크된 페이지가 어디에 표시될지 명시하는 속성</li></ul><p id="ed6a80b4-9b20-4ce3-9e0e-e3c75e5de117" class="">
+</p><h1 id="e2dac42f-9ab5-4092-b9f7-367a2feceea8" class="">&lt;span&gt;&lt;/span&gt; : 인라인(글자) 요소</h1><p id="fa448d1a-49e1-45d4-a669-ef4cf8f135d2" class="">특별한 의미가 없는 구분을 위한 요소, 특정 문자에 구분을 통하여 css를 입히고 싶을 경우 사용됨</p><p id="856bab67-d8a2-48e4-88bf-43262999cdeb" class="">
+</p><h1 id="f946251c-26b0-4f00-8b46-992ec1cf10b6" class="">&lt;br&gt; : 인라인 요소</h1><p id="e5360b64-b140-44ea-abec-bce05fa4f802" class="">줄바꿈(break)을 의미하는 요소</p><p id="a16e79dd-5c10-4226-bfaa-27446387a02d" class="">
+</p><h1 id="f9fbfbed-b5a6-43b9-bbe8-3b11bbe97ebc" class="">&lt;input /&gt; :  인라인이면서 블록 요소(inline-block)</h1><p id="9a9fded2-ea3e-4d8e-a032-ea0e8a790b41" class="">인라인 요소이긴 하지만, 상자가 가지고 있는 몇가지 요소를 가짐</p><ul id="d9d3fbe1-7c19-473c-af93-6ecf40d7875c" class="bulleted-list"><li style="list-style-type:disc">가로/세로의 크기를 가질수 있으며</li></ul><ul id="2140fb48-3d8f-40cd-95bb-ef68834aead4" class="bulleted-list"><li style="list-style-type:disc">상하좌우 여백을 가질수 있음</li></ul><ul id="a84a7ac5-f00c-4e50-b3fb-67c448d64385" class="bulleted-list"><li style="list-style-type:disc"></li></ul><p id="993117d6-5438-4e7f-86d1-c9cf8c57fa1e" class="">하지만 기본적으로 인라인이기 때문에 <strong><strong><strong><strong><strong><strong>수평</strong></strong></strong></strong></strong></strong>으로 누적되게 됨</p><p id="92d4af7c-e182-42cd-bbf5-8d1c1934189b" class="">또한 빈 타입이기 때문에 속성을 사용하는 것을 강제</p><h2 id="39f9f70c-c5cd-4961-bfaa-e6696faf8e74" class="">input 태그에 주로 사용되는 속성</h2><p id="639a0650-1244-4d43-8e1a-9bc0b3470a13" class=""><code>type</code> 어떤 형태의 입력 값을 받을 지, 지정 하는 속성</p><p id="d3781ec1-45bc-4879-b1a1-20eaaf6ca9a1" class="">또한 <code>value</code> 속성이 존재하는데, 사용자에게 데이터를 입력 받기 전에 미리 입력 되어있는 값을 지정 가능하다.</p><p id="c0c39ea3-178d-44b7-b6af-bc0907f78cae" class=""><code>placeholder</code>는 사용자가 입력할 값의 <strong><strong><strong>힌트</strong></strong></strong>를 보여주는 속성 값이다.</p><p id="0db89767-467d-4469-b630-56e948805d9d" class=""><code>disabled</code> 는 입력 요소 비활성화 한 값으로, 이 속성은 값을 별도로 입력하지 않고, 선언 하는 것 만으로 효력을 발위하게 된다.</p><h2 id="03b1abe3-f7f7-4d11-a947-c3bcb6e8d84e" class=""> - input 태그 type의 속성 값(일부 내용은 html5에서 지원)</h2><ul id="21ec6c9f-e877-4af1-8b7a-b0cf01d82958" class="bulleted-list"><li style="list-style-type:disc">text : input 창에 입력되는 내용이 글자인 것을 의미</li></ul><ul id="151e59f1-ce31-4adb-9a41-612c6a16dacd" class="bulleted-list"><li style="list-style-type:disc">checkbox : 체크박스(checkbox)를 정의함<ul id="ecf538d4-4e2e-4b09-a194-6cc5f2a8d494" class="bulleted-list"><li style="list-style-type:circle"><code>checked</code> 라는 속성을 통하여, 미리 체크된 상태로 만들 수 있음</li></ul></li></ul><ul id="58ece4a2-7db9-478d-b2c0-b4be53d32ab5" class="bulleted-list"><li style="list-style-type:disc">color : 색을 선택할 수 있는 입력 필드(color picker)를 정의함</li></ul><ul id="44292f37-9dd1-48ce-ab2d-6b88fc97cd21" class="bulleted-list"><li style="list-style-type:disc">date : 날짜를 선택할수 있는 필드를 정의함(year, month, day)</li></ul><ul id="9d189891-09db-4386-b964-49b36d8ebc7b" class="bulleted-list"><li style="list-style-type:disc">datetime-local : 날짜와 시간을 선택할 수 있는 입력 필드를 정의함(year, month, day, hour, minute)</li></ul><ul id="28687ad4-8f66-4a3c-995a-22ced7144b56" class="bulleted-list"><li style="list-style-type:disc">email : 이메일 주소를 입력할 수 있는 입력 필드를 정의함</li></ul><ul id="15e32f96-515e-4568-a1bd-f3af5368c751" class="bulleted-list"><li style="list-style-type:disc">file : 업르드할 파일을 선택할 수 있는 입력 필드와 “파일 선택” 버튼을 정의함</li></ul><ul id="e3a94b5c-ccf8-46cd-a0e7-0d2537f2c821" class="bulleted-list"><li style="list-style-type:disc">hidden : 사용자에게는 보이지 않는 숨겨진 입력 필드를 ㅓㅈㅇ의함</li></ul><ul id="241753a6-21c8-4c66-b0bd-bc66953d0895" class="bulleted-list"><li style="list-style-type:disc">image : 제출 버튼(submit button)으로 사용될 이미ㅣㅈ를 정의함</li></ul><ul id="99f4b3ff-1335-4116-91cc-8de729469c5c" class="bulleted-list"><li style="list-style-type:disc">month : 날짜를 선택할 수 있는 입력 필드를 정의함</li></ul><ul id="5561e9e5-bf40-4165-9505-9abeb87099a9" class="bulleted-list"><li style="list-style-type:disc">number : 숫자를 입력할 수 있는 입력필드를 정의함</li></ul><ul id="e1b9e305-3f9f-410c-bd08-5cfbab36a757" class="bulleted-list"><li style="list-style-type:disc">password : 비밀번호를 입력할 수 있는 입력 필드를 정의함</li></ul><ul id="10d12fdf-a55c-468c-aaff-16cffb06865d" class="bulleted-list"><li style="list-style-type:disc">radio : 라디오 버튼(radio button)을 정의함. 동일한 <code>name</code> 속성(그룹명으로 사용됨)에서 하나만 선택이 가능한 형태로 사용된다<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f9887038-174c-42f8-8382-44ff277669e1" class="code"><code class="language-HTML">...
+	&lt;label&gt;
+		&lt;input type=&quot;radio&quot; name=&quot;fruits&quot; /&gt; apple
+	&lt;/label&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;radio&quot; name=&quot;fruits&quot; /&gt; banana
+	&lt;/label&gt;</code></pre></li></ul><ul id="aaf8e8cc-d091-4128-8751-c192e46c568e" class="bulleted-list"><li style="list-style-type:disc">range : 슬라이드 바를 조정하여, 범위 내의 숫자를 선택할 수 있는 입력 필드를 정의함</li></ul><ul id="1980c288-65fd-46de-a112-6ea5d0649e67" class="bulleted-list"><li style="list-style-type:disc">reset : 리셋 버튼(reset button)을 정의함</li></ul><ul id="17d9814a-91a2-47f7-bf78-448f878b9fc8" class="bulleted-list"><li style="list-style-type:disc">search : 검색어를 입력할 수 있는 텍스트 필드를 정의함</li></ul><ul id="3d344a15-bb06-45c8-9af3-5b4836195ecb" class="bulleted-list"><li style="list-style-type:disc">submit : 제출 버튼 (submit button)을 정의함</li></ul><ul id="4be71838-0c4c-4e3c-8848-e3775f25d4b3" class="bulleted-list"><li style="list-style-type:disc">tel : 전화번호를 입력할수 있는 입력 필드를 정의함</li></ul><ul id="2e9a0d2e-ca8f-4802-b1ad-1da2a6f7e022" class="bulleted-list"><li style="list-style-type:disc">text : type 속성의 기본값으로 <span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid"><span style="border-bottom:0.05em solid">한줄로 된 텍스트 필드</span></span></span></span></span></span></span>를 정의함</li></ul><ul id="19a9cbfc-e428-4fa1-8f6f-c4c7ccdbd633" class="bulleted-list"><li style="list-style-type:disc">time : 시간을 선택할 수 있는 입력 필드를 정의함(hour, minute)</li></ul><ul id="0cb93c5d-2aa3-4fc3-9ecd-c1b13e349990" class="bulleted-list"><li style="list-style-type:disc">url : url 주소를 입력할수 있는 입력필드를 정의함</li></ul><ul id="361a586d-5bb6-4468-9824-d5da56b2b937" class="bulleted-list"><li style="list-style-type:disc">week : 날짜를 선택할수 있는 입력 필드를 정의함</li></ul><p id="5954196b-6f21-47c0-9a4f-fbaeee906517" class="">
+</p><h1 id="f7ae0930-cd0f-4309-b9a0-71d13fa0b954" class="">&lt;label&gt;&lt;/label&gt; : 인라인(글자) 요소</h1><p id="b61ce989-904a-457a-ae66-fbe471c0715d" class="">라벨의 기능을 수행, 둘러싼 내용의 특정 라벨을 붙이는 형태로 사용된다</p><p id="f8acc7d6-47b1-477b-99a0-5698b42c1836" class="">
+</p><h1 id="e1cd63af-70f7-4619-9ec1-5c8c3e3c6903" class="">&lt;table&gt; : 테이블 요소</h1><p id="e59c9192-d8ba-49ac-8a05-9f09f374cd6e" class="">표 요소로, 행(row)와 열(column)의 부모 요소로 사용되며, &lt;table&gt; 요소의 경우에는 인라인, 블록에 포함되지 않는 별도로 구분되는 요소이다.</p><p id="a9cbd4a0-127f-48e9-a46f-d2cea5d03e98" class="">(크게 보면 블록 요소)</p><p id="8189660b-aaf2-4a57-bf2d-a1e53d407b7f" class=""><strong><strong><strong><strong><strong><strong><strong><strong><strong>행이 먼저</strong></strong></strong></strong></strong></strong></strong></strong></strong>라는 것을 반드시 기억 할 필요가 있음</p><h2 id="2cbcf524-f958-48bb-8f81-e0d51a441ae0" class="">&lt;tr&gt;&lt;/tr&gt; : 행(테이블 요소)을 지정하는 요소 (table row)</h2><h2 id="c72e8543-3754-4f6c-928f-9aed78775e97" class="">&lt;td&gt;&lt;/td&gt; : 열(테이블 요소)를 지정하는 요소(table data)</h2><p id="a4a564c5-9175-4b5f-8222-8550f946fee2" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
