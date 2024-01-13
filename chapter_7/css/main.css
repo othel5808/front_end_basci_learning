@@ -14,3 +14,27 @@ div {
 .orange + li {
   background-color: green;
 }
+
+.box{
+  width: 100px;
+  height: 100px;
+  background: orange;
+  transition: 1s;
+}
+
+.box:hover {
+  width: 300px;
+  background-color: royalblue;
+}
+
+.box:active {
+  background-color: red;
+}
+
+label {
+  display: block;
+}
+
+input:focus{
+  background-color: blue;
+}
