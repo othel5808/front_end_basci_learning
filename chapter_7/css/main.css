@@ -10,3 +10,7 @@ div {
 .orange {
   color: orange;
 }
+
+.orange + li {
+  background-color: green;
+}
