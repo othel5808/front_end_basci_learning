@@ -1,4 +1,4 @@
-@import url("./box.css");
+/* @import url("./box.css");
 div {
   font-size: 100px;
 }
@@ -37,4 +37,27 @@ label {
 
 input:focus{
   background-color: blue;
+}
+ */
+/* 
+.fruits span:first-child {
+  color: red;
+}
+
+.fruits div:first-child {
+  color: orange;
+  font-size: 100px;
+}
+
+.fruits h3:last-child {
+  color: rosybrown;
+}
+
+.fruits *:nth-child(2) {
+  color: blue;
+} */
+
+.fruits *:nth-child(2n+1) {
+  color: red;
+  font-style: bold;
 }
