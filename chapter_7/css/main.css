@@ -61,3 +61,19 @@ input:focus{
   color: red;
   font-style: bold;
 }
+.box{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+}
+.box::before{
+  content: "";
+}
+
+.box::after{
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: block;
+  background-color: royalblue;
+}
