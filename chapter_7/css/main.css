@@ -77,3 +77,11 @@ input:focus{
   display: block;
   background-color: royalblue;
 }
+
+[type="text"]{
+  background-color: orange; 
+}
+
+[data-fruit-name] {
+  color: red;
+}
