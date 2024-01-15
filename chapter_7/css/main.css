@@ -103,3 +103,10 @@ input:focus{
   top: 100px;
   right: 10px;
 }
+
+div {color: red;}
+#color_yellow { color: yellow;}
+.color_green { color: green;;}
+div { color: blue;}
+* { color: darkblue; }
+body { color: violet; }
