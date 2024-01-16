@@ -1,5 +1,10 @@
 div {
-  /* width: 100px; */
-  height: 100px;
+  /* 기본값 */
+  /* width: auto; */
+  /* height: auto; */
+  background-color: orange;
+}
+
+span {
   background-color: orange;
 }
